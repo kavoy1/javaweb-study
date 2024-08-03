@@ -13,7 +13,18 @@ import java.util.List;
 public class impStuService implements stuService {
     @Autowired
     private stuMapper stuMapper;
+
     public List<student> selectAll() {
         return stuMapper.slAll();
+    }
+
+    @Override
+    public void deleteById(int id) {
+        stuMapper.dlt(id);
+    }
+
+    @Override
+    public void insert(student student) {
+        stuMapper.inst(student);
     }
 }

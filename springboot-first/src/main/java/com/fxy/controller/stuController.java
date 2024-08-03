@@ -3,9 +3,9 @@ package com.fxy.controller;
 import com.fxy.pojo.Result;
 import com.fxy.pojo.student;
 import com.fxy.service.stuService;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +15,20 @@ public class stuController {
     private stuService stuService;
 
     @GetMapping("/stus")
-    public Result searchAll() {
+    public Result SearchAll() {
         List<student> stu = stuService.selectAll();
         return Result.success(stu);
+    }
+
+    @DeleteMapping("/stus/{id}")
+    public Result DeleteById(@PathVariable int id) {
+        stuService.deleteById(id);
+        return Result.success();
+    }
+
+    @PostMapping("/stus")
+    public Result Insert(@RequestBody student stu) {
+        stuService.insert(stu);
+        return Result.success();
     }
 }

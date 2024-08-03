@@ -8,6 +8,7 @@ class SpringbootFirstApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println(System.currentTimeMillis());
     }
 
 }
