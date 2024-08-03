@@ -19,4 +19,7 @@ public interface stuMapper {
 
     @Insert("INSERT into db01.stu (db01.stu.name, db01.stu.age, db01.stu.gender, db01.stu.rsTime, db01.stu.class) values (#{name},#{age},#{gender},now(),#{cls})")
     public void inst(student stu);
+
+    @Select("select * from stu where id = #{id}")
+    public student sltById(int id);
 }

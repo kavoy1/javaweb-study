@@ -27,4 +27,9 @@ public class impStuService implements stuService {
     public void insert(student student) {
         stuMapper.inst(student);
     }
+
+    @Override
+    public student selectById(int id) {
+        return stuMapper.sltById(id);
+    }
 }

@@ -31,4 +31,10 @@ public class stuController {
         stuService.insert(stu);
         return Result.success();
     }
+
+    @GetMapping("/stus/{id}")
+    public Result SearchById(@PathVariable int id) {
+        student stu = stuService.selectById(id);
+        return Result.success(stu);
+    }
 }

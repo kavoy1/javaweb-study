@@ -10,4 +10,6 @@ public interface stuService {
     public void deleteById(int id);
 
     public void insert(student student);
+
+    public student selectById(int id);
 }
