@@ -1,6 +1,7 @@
 package com.fxy.controller;
 
 import com.fxy.pojo.Result;
+import com.fxy.pojo.pageMsg;
 import com.fxy.pojo.student;
 import com.fxy.service.stuService;
 import org.apache.ibatis.annotations.Delete;
@@ -36,5 +37,18 @@ public class stuController {
     public Result SearchById(@PathVariable int id) {
         student stu = stuService.selectById(id);
         return Result.success(stu);
+    }
+
+    @PutMapping("/stusUp")
+    public Result UpdateById(@RequestBody student stu) {
+        stuService.update(stu);
+        return Result.success();
+    }
+
+    @PostMapping("/pageSrc")
+    public Result pageSearch(@RequestBody pageMsg pageMsg) {
+        System.out.println(pageMsg.getStu());
+        List<student> ls = stuService.pageSrc(pageMsg);
+        return Result.success(ls);
     }
 }

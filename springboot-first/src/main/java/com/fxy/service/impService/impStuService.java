@@ -1,6 +1,7 @@
 package com.fxy.service.impService;
 
 import com.fxy.mapper.stuMapper;
+import com.fxy.pojo.pageMsg;
 import com.fxy.pojo.student;
 import com.fxy.service.stuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,17 @@ public class impStuService implements stuService {
     @Override
     public student selectById(int id) {
         return stuMapper.sltById(id);
+    }
+
+    @Override
+    public void update(student student) {
+        stuMapper.upById(student);
+    }
+
+    @Override
+    public List<student> pageSrc(pageMsg pageMsg) {
+        int realPage = (pageMsg.getPage()-1)*pageMsg.getPageSize();
+        int pageSize = pageMsg.getPageSize();
+        return stuMapper.pageSearch(realPage, pageSize, pageMsg.getStu());
     }
 }

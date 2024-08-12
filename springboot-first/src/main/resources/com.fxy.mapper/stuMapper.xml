@@ -1,0 +1,35 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxy.mapper.stuMapper">
+
+
+    <update id="upById">
+        update db01.stu
+        <set>
+            <if test="name!=null">name = #{name},</if>
+            <if test="age!=null">age = #{age},</if>
+            <if test="gender!=null">gender = #{gender},</if>
+            <if test="cls!=null">class = #{cls}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="sltById" resultType="com.fxy.pojo.student">
+        select * from db01.stu
+        where id = #{id}
+    </select>
+    <select id="pageSearch" resultType="com.fxy.pojo.student">
+        select * from db01.stu
+        <where>
+            <trim suffixOverrides=",">
+                <if test="stu.id != 0">id = #{stu.id}</if>
+                <if test="stu.name != null">and name like concat('%', #{stu.name}, '%')</if>
+                <if test="stu.age != 0">and age = #{stu.age}</if>
+                <if test="stu.gender != null">and gender = #{stu.gender}</if>
+                <if test="stu.cls != 0">and cls = #{stu.cls}</if>
+            </trim>
+        </where>
+        limit #{realPage}, #{pageSize}
+    </select>
+</mapper>

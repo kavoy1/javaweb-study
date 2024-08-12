@@ -1,10 +1,7 @@
 package com.fxy.mapper;
 
 import com.fxy.pojo.student;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -20,6 +17,11 @@ public interface stuMapper {
     @Insert("INSERT into db01.stu (db01.stu.name, db01.stu.age, db01.stu.gender, db01.stu.rsTime, db01.stu.class) values (#{name},#{age},#{gender},now(),#{cls})")
     public void inst(student stu);
 
-    @Select("select * from stu where id = #{id}")
+    //@Select("select * from stu where id = #{id}")
     public student sltById(int id);
+
+
+    public int upById(student stu);
+
+    public List<student> pageSearch(@Param("realPage") int realPage,@Param("pageSize") int pageSize,@Param("stu") student stu);
 }
