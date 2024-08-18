@@ -17,4 +17,6 @@ public interface stuService {
     public void update(student student);
 
     public List<student> pageSrc(pageMsg pageMsg);
+
+    public void delAll(List<Integer> id);
 }

@@ -24,4 +24,6 @@ public interface stuMapper {
     public int upById(student stu);
 
     public List<student> pageSearch(@Param("realPage") int realPage,@Param("pageSize") int pageSize,@Param("stu") student stu);
+
+    public void deletAll(@Param("ids") List<Integer> ids);
 }

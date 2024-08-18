@@ -32,4 +32,11 @@
         </where>
         limit #{realPage}, #{pageSize}
     </select>
+
+    <delete id="deletAll">
+        delete from db01.stu where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

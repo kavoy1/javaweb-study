@@ -45,4 +45,9 @@ public class impStuService implements stuService {
         int pageSize = pageMsg.getPageSize();
         return stuMapper.pageSearch(realPage, pageSize, pageMsg.getStu());
     }
+
+    @Override
+    public void delAll(List<Integer> id) {
+        stuMapper.deletAll(id);
+    }
 }
