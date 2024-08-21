@@ -63,7 +63,7 @@ public class stuController {
         return Result.success();
     }
 
-    @PostMapping("/upload")
+    @PostMapping("/localUpload")
     public Result addFile(@RequestParam("file") MultipartFile file) throws Exception {
         String fileName = file.getOriginalFilename();
 
