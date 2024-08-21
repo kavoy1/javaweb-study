@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询学生信息</title>
+</head>
+<body>
+<h2>查询学生信息</h2>
+<form id="searchForm">
+    <input type="text" id="id" placeholder="输入学生ID">
+    <button type="button" onclick="searchById()">查询</button>
+</form>
+<div id="result"></div>
+
+<script>
+    function searchById() {
+        var id = document.getElementById('id').value;
+        fetch(`/stus/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = JSON.stringify(data);
+            });
+    }
+</script>
+</body>
+</html>
