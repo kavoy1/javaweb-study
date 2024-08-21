@@ -63,20 +63,18 @@ public class stuController {
         return Result.success();
     }
 
-//    @PostMapping("/upload")
-//    public Result addFile(@RequestParam("file") MultipartFile file) throws Exception {
-//        String fileName = file.getOriginalFilename();
-//
-//        int i = fileName.lastIndexOf(".");
-//        String suffix = fileName.substring(i);
-//
-//        String UUID = java.util.UUID.randomUUID().toString();
-//
-//        String fullName = UUID + suffix;
-//
-//        file.transferTo(new File("E:\\project\\java\\javaweb-study\\springboot-first\\src\\main\\resources\\FIles\\"+fullName));
-//        return Result.success(fullName);
-//    }
+    @PostMapping("/upload")
+    public Result addFile(@RequestParam("file") MultipartFile file) throws Exception {
+        String fileName = file.getOriginalFilename();
 
+        int i = fileName.lastIndexOf(".");
+        String suffix = fileName.substring(i);
 
+        String UUID = java.util.UUID.randomUUID().toString();
+
+        String fullName = UUID + suffix;
+
+        file.transferTo(new File("E:\\project\\java\\javaweb-study\\springboot-first\\src\\main\\resources\\FIles\\"+fullName));
+        return Result.success(fullName);
+    }
 }
