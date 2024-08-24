@@ -15,4 +15,5 @@ public class Result {
         return new Result(1, "success", data);
     }
     public static Result success() {return new Result(1, "success", null);}
+    public static Result error(){return new Result(0, "error", null);}
 }
